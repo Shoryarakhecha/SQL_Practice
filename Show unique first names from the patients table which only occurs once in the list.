@@ -1,0 +1,17 @@
+Show unique first names from the patients table which only occurs once in the list.
+
+select first_name 
+from patients
+group by first_name
+having count(first_name)=1
+
+solution--2
+SELECT first_name
+FROM (
+    SELECT
+      first_name,
+      count(first_name) AS occurrencies
+    FROM patients
+    GROUP BY first_name
+  )
+WHERE occurrencies = 1
